@@ -1,4 +1,4 @@
-FROM busybox:uclibc
+FROM scratch
 
 COPY lib/ld-2.24.so /lib64/ld-linux-x86-64.so.2
 COPY lib/libc.so.6  /usr/lib/libc.so.6
