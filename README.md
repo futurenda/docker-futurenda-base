@@ -1,6 +1,6 @@
 # docker-busybox-futurenda
 
-https://hub.docker.com/r/futurenda/busybox/
+https://hub.docker.com/r/futurenda/base/
 
 Minimal busybox with:
 
