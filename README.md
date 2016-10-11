@@ -1,4 +1,4 @@
-# docker-busybox-futurenda
+# docker-scratch-futurenda
 
 https://hub.docker.com/r/futurenda/base/
 
