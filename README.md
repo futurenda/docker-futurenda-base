@@ -2,7 +2,7 @@
 
 https://hub.docker.com/r/futurenda/base/
 
-Minimal busybox with:
+Minimal base image with:
 
 - ld-2.24.so
 - libc.so.6
