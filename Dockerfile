@@ -9,4 +9,5 @@ COPY lib/libpthread-2.24.so /usr/lib/libpthread.so.0
 # Add Tini
 ENV TINI_VERSION v0.15.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
-RUN chmod +x /tini
+# Use JSON format here to run command without /bin/sh
+RUN ["chmod", "+x", "/tini"]
