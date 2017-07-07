@@ -4,5 +4,6 @@ https://hub.docker.com/r/futurenda/base/
 
 Minimal base image with:
 
-- busybox:1.26.2-glibc
+- BusyBox v1.27.0
+- GLIBC 2.24
 - Tini v0.15.0
