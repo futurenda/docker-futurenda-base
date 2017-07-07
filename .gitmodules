@@ -1,3 +1,0 @@
-[submodule "busybox"]
-	path = busybox
-	url = https://github.com/docker-library/busybox.git

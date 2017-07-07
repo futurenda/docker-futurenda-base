@@ -1,16 +1,28 @@
 #!/usr/bin/env bash
 
+set -ex
+
 rm -rf rootfs
 rm -rf glibc
 rm -rf rootfs.tar.xz
 
-mkdir -p rootfs
-tar xf busybox/glibc/busybox.tar.xz -C rootfs
+cp -r busybox rootfs
 
-wget https://www.archlinux.org/packages/core/x86_64/glibc/download/ -O glibc.pkg.tar.xz
+if [ ! -f glibc.pkg.tar.xz ]; then
+    wget https://www.archlinux.org/packages/core/x86_64/glibc/download/ -O glibc.pkg.tar.xz
+fi
 mkdir -p glibc
 tar xf glibc.pkg.tar.xz -C glibc
-cp glibc/usr/lib/libc-2.25.so rootfs/lib/libc.so.6
+
+libs=$(ls -I ld-linux-x86-64.so.2 rootfs/lib)
+
+for lib in ${libs[@]}; do
+    cp -L glibc/usr/lib/${lib} rootfs/lib/${lib}
+done
+
+cp -rf glibc/usr/lib/* rootfs/lib
+
+cp $(which ldd) rootfs/bin
 
 cd rootfs
 tar -Jcvf ../rootfs.tar.xz .
