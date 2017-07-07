@@ -28,5 +28,10 @@ jobs:
         command: |
           docker run -t futurenda/base busybox
           docker run -t futurenda/base /lib/libc.so.6
+
+      - type: deploy
+        command: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASS
           TAG=v$(cat package.json| grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')-ci.$CIRCLE_BUILD_NUM
-          echo $TAG
+          docker tag futurenda/base:$TAG futurenda/base
+          docker push futurenda/base:$TAG
