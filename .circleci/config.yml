@@ -26,6 +26,7 @@ jobs:
       - type: shell
         name: Check Docker Image
         command: |
-          docker run -t futurenda/base busybox | head -1
+          docker run -t futurenda/base busybox
+          docker run -t futurenda/base /lib/libc.so.6
           TAG=v$(cat package.json| grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')-ci.$CIRCLE_BUILD_NUM
           echo $TAG
