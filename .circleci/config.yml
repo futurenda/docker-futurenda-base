@@ -21,10 +21,11 @@ jobs:
 
       - run: ./scripts/rootfs.sh
 
+      - run: docker build -t futurenda/base .
+
       - type: shell
-        name: Docker Image
+        name: Check Docker Image
         command: |
-          docker build -t futurenda/base .
           docker run -t futurenda/base busybox | head -1
           TAG=v$(cat package.json| grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')-ci.$CIRCLE_BUILD_NUM
           echo $TAG
