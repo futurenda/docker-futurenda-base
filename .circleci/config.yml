@@ -1,0 +1,22 @@
+version: 2
+jobs:
+  build:
+    workDir: /home/builder/docker-futurenda-base
+    docker:
+      - image: futurenda/buildpack:v1.29.0
+    steps:
+      - checkout
+
+      - type: shell
+        name: git submodule
+        command: |
+          git submodule sync
+          git submodule update --init
+
+      - setup_remote_docker
+
+      - type: shell
+        name: Docker Image Tag
+        command: |
+          TAG=v$(cat package.json| grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')-ci.$CIRCLE_BUILD_NUM
+          echo $TAG

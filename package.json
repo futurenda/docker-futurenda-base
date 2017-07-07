@@ -1,0 +1,18 @@
+{
+    "name": "docker-scratch-futurenda",
+    "version": "4.0.1",
+    "description": "https://hub.docker.com/r/futurenda/base/",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "release": "npm version patch && git push && git push --tags"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/futurenda/docker-scratch-futurenda.git"
+    },
+    "bugs": {
+        "url": "https://github.com/futurenda/docker-scratch-futurenda/issues"
+    },
+    "homepage": "https://github.com/futurenda/docker-scratch-futurenda#readme"
+}
