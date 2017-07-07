@@ -33,5 +33,5 @@ jobs:
         command: |
           docker login -u $DOCKER_USER -p $DOCKER_PASS
           TAG=v$(cat package.json| grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')-ci.$CIRCLE_BUILD_NUM
-          docker tag futurenda/base:$TAG futurenda/base
+          docker tag futurenda/base futurenda/base:$TAG
           docker push futurenda/base:$TAG
